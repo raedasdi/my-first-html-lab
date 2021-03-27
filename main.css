@@ -1,6 +1,7 @@
-body{
+body {
     background-image: url(https://freellustrustrations.s3.us-east-2.amazonaws.com/free-images/thumbimg_25361957thumbejpg.jpg); 
     background-size: cover;
+    border: white;
 }
 
 .main-header-class{
