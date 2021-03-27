@@ -1,0 +1,70 @@
+<!-- 
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+-->
+
+<html>
+<body>
+    <h1>Triangle Checker</h1>
+    <label for='side1'>Side 1</label><br>
+    <input id='side1' type='number'><br>
+    <label for='side2'>Side 2</label><br>
+    <input id='side2' type='number'><br>
+    <label for='side3'>Side 3</label><br>
+    <input id='side3' type='number'><br>
+    <button onclick="triTyp(document.getElementById('side1').value, 
+            document.getElementById('side2').value, document.getElementById('side3').value)">Submit</button><br><br>
+    <div style="background-color: rgb(230, 230, 230); border-radius: 10px; width:400px; height:300px; text-align: center">
+        <div style="margin: auto">
+            <img id="triImage" style="max-height: 200px; max-width=200px; display: block; margin: auto" src="https://joemoran.co.uk/wp-content/uploads/2013/02/BrokenTriangle6.jpg"><br><br>
+            <h3 style="display: block; margin: auto">This is <span id='isIsNot'>not</span> a(n) <span id='triType'></span> triangle.</h3>
+        </div>    
+    </div>
+    <script>
+        const iso = "https://geometryhelp.net/wp-content/uploads/2019/04/finding-area-of-isosceles1.jpg"
+        const eq = "https://www.math.net/img/a/geometry/triangles/equilateral-triangle/equilateral-triangle.png"
+        const sca = "https://www.varsitytutors.com/assets/vt-hotmath-legacy/hotmath_help/topics/scalene-triangle/scalene-triangle-image002.gif"
+        const inValid = "https://joemoran.co.uk/wp-content/uploads/2013/02/BrokenTriangle6.jpg"
+        const exclPoint = "https://lh3.googleusercontent.com/proxy/OJGCWG9E0G4S6_Q8qLZhUaA-QJ_FuavdJgCcJzT3b4TGiKP6dNDrfUb7r5P5GKuy2paAIwHsDGZaALoGg6IIO4OVlhiW3eLGjg17b5vdkXeaE16cVON6A31pNa85cd0FKtKf"
+        
+        function triTyp(s1, s2, s3){
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+            s3 = parseFloat(s3);
+            if(s1 <= 0 || s2 <= 0 || s3 <= 0 || s1+s2 <= s3 || s2+s3 <= s1 || s1+s3 <= s2 || isNaN(s1) || isNaN(s2) || isNaN(s3)){
+                document.getElementById('triImage').src = inValid;
+                document.getElementById('isIsNot').innerHTML = "not";
+                document.getElementById('triType').innerHTML = '';
+                if(s1 <= 0 || s2 <= 0 || s3 <= 0){
+                    document.getElementById('triImage').src = exclPoint;
+                    alert("Negative Numbers and Zeroes are Invalid! Please enter 3 non-zero numbers!")
+                }
+                if(isNaN(s1) || isNaN(s2) || isNaN(s3)){
+                    document.getElementById('triImage').src = exclPoint;
+                    alert("No input detected! Please enter 3 non-negative numbers!")
+                }
+            } else{
+                if(s1 == s2 && s2 == s3){
+                    document.getElementById('triImage').src = eq;
+                    document.getElementById('isIsNot').innerHTML = "";
+                    document.getElementById('triType').innerHTML = 'equilateral';
+                } else if(s1==s2 || s2 == s3 || s3 == s1){
+                    document.getElementById('triImage').src = iso;
+                    document.getElementById('isIsNot').innerHTML = "";
+                    document.getElementById('triType').innerHTML = 'isosceles';
+                } else {
+                    document.getElementById('triImage').src = sca;
+                    document.getElementById('isIsNot').innerHTML = "";
+                    document.getElementById('triType').innerHTML = 'scalene';
+                }
+            }
+            
+            
+        }
+    </script>
+</body>
+</html>
